@@ -80,7 +80,7 @@
 
 .button-wr {
   position: fixed;
-  z-index: 5;
+  z-index: 8;
   left: 50%;
   transform: translate(-50%,100%);
   transition: transform .85s cubic-bezier(.18,1.08,.33,1.07), opacity .45s ease;
@@ -129,7 +129,7 @@
 
 .product {
   position: fixed;
-  z-index: 4;
+  z-index: 7;
   top: 50%;
   display: grid;
   pointer-events: none;
@@ -168,7 +168,7 @@
       @media (orientation: landscape) {
         transform: translate(-78%, -43%) scale(0.3);
       }
-      @media (orientation: portrait) {
+      @media (orientation: portrait) and (min-width:$mobileSmall) {
         transform: translate(-78%, -55%) scale(0.5);
         left: 30%;
       }
@@ -271,7 +271,7 @@
         @media (orientation: landscape) {
           transform: translate(50%,0);
         }
-        @media (orientation: portrait) {
+        @media (orientation: portrait) and (min-width:$mobileSmall) {
           transform: translate(0, calc(100% + 50px));
         }
         @media (max-width:$mobileSmall){
@@ -347,6 +347,159 @@
       @include adaptiveValue("height", 100, 60,0,1400.98,480.98);
     }
     img {}
+  }
+}
+
+@keyframes animBaguette {
+  0% {
+    transform: scale(1.5) rotate(30deg);
+  }
+  100% {
+    transform: scale(0.8) rotate(0deg);
+  }
+}
+
+.baguette {
+  position: fixed;
+  z-index: 6;
+  pointer-events: none;
+  inset: 0;
+  @extend %transformCubicB;
+  .fp-section-4 & {
+    animation: animBaguette 0.85s cubic-bezier(.18,1.08,.33,1.07) forwards;
+  }
+		// .baguette__body
+		&__body {
+      position: absolute;
+      inset: 0;
+      // overflow: hidden;
+      opacity: 0;
+      transform: scale(1.5) rotate(30deg);
+      transform-origin: 50% 50%;
+      @extend %transformCubicB;
+      .loaded & {
+        opacity: 1;
+        transform: scale(1) rotate(0deg);
+        transition-delay: .5s;
+      }
+      .fp-section-0.fp-up &,
+      .fp-section-1 &,
+      .fp-section-2 &,
+      .fp-section-3 &,
+      .fp-section-4 & {
+        transition-delay: 0s;
+      }
+      .fp-section-0.fp-up & {
+        transform: scale(1) rotate(0deg);
+      }
+      .fp-section-1 & {
+        transform: scale(0.8) rotate(0deg);
+      }
+      .fp-section-2 & {
+        transform: scale(1.1) rotate(3deg);
+      }
+      .fp-section-3 & {
+        transform: scale(0.9) rotate(-5deg);
+      }
+		}
+  // .baguette__item
+  &__item {
+    position: absolute;
+    @extend %transformCubicB;
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+    &.item-1 {
+      top: 0;
+      left: 0;
+      filter: blur(5px);
+      -webkit-filter: blur(5px);
+      img {
+        @include adaptiveValue("width", 293, 226,2,1920,1440.98);
+        @include adaptiveValue("width", 226, 246,3,1440.98,480.98);
+      }
+      @media (min-width:$tablet){
+        transform: translate(-50%,-30%) rotate(-70deg);
+      }
+      @media (max-width:$tablet){
+        transform: translate(-50%,-50%) rotate(-70deg);
+      }
+    }
+    &.item-2 {
+      top: 50%;
+      left: 0;
+      transform: translate(-50%,0%) rotate(20deg);
+      img {
+        @include adaptiveValue("width", 175, 134,2,1920,1440.98);
+        @include adaptiveValue("width", 134, 120,3,1440.98,480.98);
+      }
+    }
+    &.item-3 {
+      bottom: 0;
+      left: 0;
+      transform: translate(-50%,70%) rotate(-20deg);
+      filter: blur(3px);
+      -webkit-filter: blur(3px);
+      img {
+        @include adaptiveValue("width", 565, 435,2,1920,1440.98);
+        @include adaptiveValue("width", 435, 265,3,1440.98,480.98);
+      }
+    }
+    &.item-4 {
+      top: 0%;
+      left: 50%;
+      transform: translate(-50%,-100%) rotate(-140deg);
+      img {
+        @include adaptiveValue("width", 156, 120,2,1920,1440.98);
+        @include adaptiveValue("width", 120, 74,3,1440.98,480.98);
+      }
+    }
+    &.item-5 {
+      bottom: 0%;
+      left: 50%;
+      transform: translate(0%,80%) rotate(0deg);
+      img {
+        @include adaptiveValue("width", 228, 175,2,1920,1440.98);
+        @include adaptiveValue("width", 175, 130,3,1440.98,480.98);
+      }
+      .fp-section-3 & {
+        opacity: 0;
+      }
+      .fp-section-4 & {
+        transform: translate(80%,80%) rotate(0deg);
+      }
+    }
+    &.item-6 {
+      top: 0%;
+      right: 0;
+      transform: translate(50%,-50%) rotate(-110deg);
+      filter: blur(3px);
+      -webkit-filter: blur(3px);
+      img {
+        @include adaptiveValue("width", 436, 336,2,1920,1440.98);
+        @include adaptiveValue("width", 336, 175,3,1440.98,480.98);
+      }
+    }
+    &.item-7 {
+      top: 50%;
+      right: 0;
+      transform: translate(40%,-50%) rotate(-20deg);
+      img {
+        @include adaptiveValue("width", 100, 75,2,1920,1440.98);
+        @include adaptiveValue("width", 75, 82,3,1440.98,480.98);
+      }
+     
+    }
+    &.item-8 {
+      bottom: 0;
+      right: 0;
+      transform: translate(40%,0%) rotate(-80deg);
+      img {
+        @include adaptiveValue("width", 192, 148,2,1920,1440.98);
+        @include adaptiveValue("width", 148, 75,3,1440.98,480.98);
+      }
+    }
   }
 }
 
