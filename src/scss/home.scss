@@ -189,9 +189,13 @@
   }
   .video-youtube {
   }
+  .video-youtube__button {
+    border: toRem(2) solid #000;
+  }
   .video-youtube__body, 
   .video-youtube__button,
   .video-youtube__button iframe {
+    height: 100%;
     @media (min-width:$mobileSmall){
       min-height: 50svh;
     }

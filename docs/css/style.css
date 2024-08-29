@@ -661,6 +661,14 @@ body {
   transform: translateY(0);
   pointer-events: all
 }
+.block-sl .video-youtube__button {
+  border: .125rem solid #000
+}
+.block-sl .video-youtube__body,
+.block-sl .video-youtube__button,
+.block-sl .video-youtube__button iframe {
+  height: 100%
+}
 .social__list {
   display: grid;
   grid-template-columns: repeat(3,1fr);
